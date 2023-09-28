@@ -7,9 +7,12 @@ type AuthProps = {
 
 const Auth: React.FC<AuthProps> = ({ children }) => {
   const navigate = useNavigate();
-  const user = useAppSelector((state: any) => state.user.name);
 
-  if (user === "") {
+  const user = document.cookie;
+  console.log(user);
+  // useAppSelector((state: any) => state.user.name);
+
+  if (user) {
     navigate("/login");
   }
 
