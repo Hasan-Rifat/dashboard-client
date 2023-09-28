@@ -6,20 +6,23 @@ export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_URL,
-    credentials: "include" as const,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
   }),
 
   endpoints: (builder) => ({
     refreshToken: builder.query({
       query: () => ({
         url: `user/refresh-token`,
-        // credentials: "include" as const,
+        // credentials: "include",
       }),
     }),
     loadUser: builder.query({
       query: () => ({
         url: `user/me`,
-        // credentials: "include" as const,
+        // credentials: "include",
       }),
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {

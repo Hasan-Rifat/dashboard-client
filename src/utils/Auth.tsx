@@ -1,5 +1,4 @@
 import React from "react";
-import { useAppSelector } from "../app/hooks";
 import { useNavigate } from "react-router-dom";
 type AuthProps = {
   children: React.ReactNode;
