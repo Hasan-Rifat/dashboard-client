@@ -9,7 +9,7 @@ const Auth: React.FC<AuthProps> = ({ children }) => {
   const navigate = useNavigate();
   const user = useAppSelector((state: any) => state.user.name);
 
-  if (!user) {
+  if (user === "") {
     navigate("/login");
   }
 
