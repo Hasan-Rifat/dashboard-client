@@ -1,31 +1,57 @@
-# React + TypeScript + Vite
+## challenges
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- The challenge for me has been to integrate the verification system using jwt
 
-Currently, two official plugins are available:
+- Sending mail within Gmail was a challenging part for me
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- And the image storage part in the cloud was more challenging for me as I implemented cloudinary for the first time in my life.
 
-## Expanding the ESLint configuration
+## Documentation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+[Documentation](https://documenter.getpostman.com/view/20648889/2s9YJXakSK)
 
-- Configure the top-level `parserOptions` property like this:
+## start
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+- product setup commands
+
+```
+install all packages - yarn | npm i
+
+run - yarn dev | npm run dev
+
+build - yarn build | npm run build
+
+
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# dashboard-client
-# dashboard-client
-# dashboard-client
-# dashboard-client
+# features
+
+## User Registration:
+
+- Implement a registration form with the following fields:
+  - Name
+  - Email
+  - Phone
+  - Image (profile picture)
+  - Date of Birth (DOB)
+
+## Authentication and Authorization:
+
+- Implement user authentication using JWT.
+- Users should be able to log in and log out.
+
+## Email Verification:
+
+- Upon successful registration, send an email verification link to the user's provided email address.
+- Implement an endpoint that handles email verification using JWT.
+- Users should only be able to access the admin panel after email verification.
+
+## packages
+
+- eslint
+- tailwindcss
+- redux rtq query
+- react router dom
+- react-hot-toast
+- react-hook-form
+- react-icons
