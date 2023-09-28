@@ -30,6 +30,7 @@ export const apiSlice = createApi({
               email: result.data.data.email,
               name: result.data.data.name,
               role: result.data.data.role,
+              verified: result.data.data.verified,
             })
           );
         } catch (error) {

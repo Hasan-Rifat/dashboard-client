@@ -6,6 +6,7 @@ export interface IState {
   email: string;
   name: string;
   role: string;
+  verified: "";
 }
 
 const initialState: IState = {
@@ -13,6 +14,7 @@ const initialState: IState = {
   email: "",
   name: "",
   role: "",
+  verified: "",
 };
 
 export const userSlice = createSlice({
@@ -20,6 +22,19 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     getUser: (state, action: PayloadAction<IState>) => {
+      state.image = action.payload.image;
+      state.email = action.payload.email;
+      state.name = action.payload.name;
+      state.role = action.payload.role;
+      state.verified = action.payload.verified;
+    },
+    logInUser: (state, action: PayloadAction<IState>) => {
+      state.image = action.payload.image;
+      state.email = action.payload.email;
+      state.name = action.payload.name;
+      state.role = action.payload.role;
+    },
+    register: (state, action: PayloadAction<IState>) => {
       state.image = action.payload.image;
       state.email = action.payload.email;
       state.name = action.payload.name;
@@ -35,6 +50,6 @@ export const userSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { userLogout, getUser } = userSlice.actions;
+export const { userLogout, getUser, logInUser, register } = userSlice.actions;
 
 export default userSlice.reducer;

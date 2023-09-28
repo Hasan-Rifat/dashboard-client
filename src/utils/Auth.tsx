@@ -1,15 +1,16 @@
 import React from "react";
-import Login from "../pages/Login";
 import { useAppSelector } from "../app/hooks";
+import { useNavigate } from "react-router-dom";
 type AuthProps = {
   children: React.ReactNode;
 };
 
 const Auth: React.FC<AuthProps> = ({ children }) => {
-  const user = useAppSelector((state) => state.user);
+  const navigate = useNavigate();
+  const user = useAppSelector((state: any) => state.user.name);
 
   if (!user) {
-    return <Login />;
+    navigate("/login");
   }
 
   return children;

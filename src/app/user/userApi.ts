@@ -17,6 +17,7 @@ const userApiSlice = apiSlice.injectEndpoints({
         url: `user/create-user`,
         method: "POST",
         body,
+        credentials: "include" as const,
       }),
     }),
 
@@ -31,7 +32,7 @@ const userApiSlice = apiSlice.injectEndpoints({
 
     // delete user
     deleteUser: builder.mutation({
-      query: (id) => ({
+      query: (id: string) => ({
         url: `user/${id}`,
         method: "DELETE",
       }),
@@ -39,7 +40,7 @@ const userApiSlice = apiSlice.injectEndpoints({
 
     // login user
     loginUser: builder.mutation({
-      query: (body) => ({
+      query: (body: { email: string; password: string }) => ({
         url: `user/login`,
         method: "POST",
         body,
@@ -48,8 +49,12 @@ const userApiSlice = apiSlice.injectEndpoints({
     }),
 
     // logout user
-    logoutUser: builder.query({
-      query: () => `user/logout`,
+    logoutUser: builder.mutation({
+      query: () => ({
+        url: `user/logout`,
+        method: "POST",
+        credentials: "include",
+      }),
     }),
 
     // refresh token
@@ -66,6 +71,6 @@ export const {
   useUpdateUserMutation,
   useDeleteUserMutation,
   useLoginUserMutation,
-  useLogoutUserQuery,
+  useLogoutUserMutation,
   useRefreshTokenQuery,
 } = userApiSlice;

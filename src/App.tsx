@@ -1,11 +1,10 @@
+import { useAppSelector } from "./app/hooks";
+import AdminCard from "./components/ui/AdminCard";
+import UserCard from "./components/ui/UserCard";
+
 function App() {
-  return (
-    <>
-      <h1 className="text-3xl font-bold underline text-red-600 bg-black">
-        Hello world!
-      </h1>
-    </>
-  );
+  const { role } = useAppSelector((state) => state.user);
+  return <>{role === "admin" ? <AdminCard /> : <UserCard />}</>;
 }
 
 export default App;

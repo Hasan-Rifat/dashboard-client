@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../app/user/userApi";
 import toast from "react-hot-toast";
 
@@ -10,8 +10,8 @@ type LoginFormData = {
 };
 
 const Login: React.FC = () => {
-  console.log(document.cookie);
-  const [loginUser, { isLoading, isError, error, isSuccess }] =
+  const navigate = useNavigate();
+  const [loginUser, { isLoading, isError, error, data }] =
     useLoginUserMutation();
   const {
     register,
@@ -21,12 +21,13 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     // Handle login state here with isSuccess, isError, error, isLoading
-    // toast
 
-    if (isSuccess) {
-      toast.success("Login success", {
+    if (data) {
+      toast.success(data.message, {
         id: "login-success",
       });
+      navigate("/");
+      window.location.reload();
     }
 
     if (error) {
@@ -52,7 +53,7 @@ const Login: React.FC = () => {
       toast.dismiss("login-error");
       toast.dismiss("login-loading");
     };
-  }, [isSuccess, isError, error, isLoading]);
+  }, [data, isError, error, isLoading, navigate]);
 
   const onSubmit = (data: LoginFormData) => {
     // Handle form submission here

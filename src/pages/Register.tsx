@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import { useCreateUserMutation } from "../app/user/userApi";
 import toast from "react-hot-toast";
@@ -7,11 +7,13 @@ import toast from "react-hot-toast";
 type RegisterProps = {};
 
 const Register: React.FC<RegisterProps> = () => {
+  const navigate = useNavigate();
   const [createUser, { isLoading, isError, error, isSuccess, data }] =
     useCreateUserMutation();
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -29,14 +31,17 @@ const Register: React.FC<RegisterProps> = () => {
       }
     };
     fileReader.readAsDataURL(selectedImage);
+    reset();
+    if (data) {
+      navigate("/login");
+    }
   };
 
   useEffect(() => {
     // Handle login state here with isSuccess, isError, error, isLoading
-    // toast
 
-    if (isSuccess) {
-      toast.success(data.data.message, {
+    if (data) {
+      toast.success(data.message, {
         id: "user-create-success",
       });
     }
