@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../app/user/userApi";
 import toast from "react-hot-toast";
 
@@ -11,6 +11,7 @@ type LoginFormData = {
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [loginUser, { isLoading, isError, error, data }] =
     useLoginUserMutation();
   const {
@@ -19,6 +20,8 @@ const Login: React.FC = () => {
     formState: { errors },
   } = useForm<LoginFormData>();
 
+  const from = location.state?.from?.pathname || "/";
+
   useEffect(() => {
     // Handle login state here with isSuccess, isError, error, isLoading
 
@@ -26,7 +29,7 @@ const Login: React.FC = () => {
       toast.success(data.message, {
         id: "login-success",
       });
-      navigate("/");
+      navigate(from, { replace: true });
       window.location.reload();
     }
 

@@ -46,6 +46,19 @@ const userApiSlice = apiSlice.injectEndpoints({
         body,
         // credentials: "include",
       }),
+      async onQueryStarted(_, { queryFulfilled }) {
+        try {
+          const data = (await queryFulfilled).data;
+          localStorage.setItem("accessToken", JSON.stringify(data.accessToken));
+          localStorage.setItem(
+            "refreshToken",
+            JSON.stringify(data.refreshToken)
+          );
+          console.log(data);
+        } catch (error) {
+          console.log(error);
+        }
+      },
     }),
 
     // logout user
