@@ -5,7 +5,7 @@ import { getUser } from "../user/userSlice";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    // credentials: "include",
+    credentials: "include",
     baseUrl: import.meta.env.VITE_API_URL,
     headers: {
       "Content-Type": "application/json",
@@ -25,7 +25,7 @@ export const apiSlice = createApi({
             localStorage.getItem("refreshToken") as string
           )}`,
         },
-        // credentials: "include",
+        credentials: "include",
       }),
     }),
     loadUser: builder.query({
