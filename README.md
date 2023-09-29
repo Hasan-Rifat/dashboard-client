@@ -24,6 +24,14 @@ build - yarn build | npm run build
 
 ```
 
+- admin login
+
+```
+gmail:- contacthasanrifat@gmail.com
+password:- contacthasanrifat@gmail.com
+
+```
+
 # features
 
 ## User Registration:
