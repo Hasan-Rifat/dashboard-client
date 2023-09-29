@@ -51,10 +51,6 @@ const Register: React.FC<RegisterProps> = () => {
         toast.error(error.message, {
           id: "user-create-error",
         });
-      } else {
-        toast.error("An error occurred", {
-          id: "user-create-error",
-        });
       }
     }
 

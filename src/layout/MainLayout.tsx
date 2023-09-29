@@ -66,10 +66,6 @@ const MainLayout = () => {
         toast.error(error.message, {
           id: "LogOut-error",
         });
-      } else {
-        toast.error("An error occurred", {
-          id: "LogOut-error",
-        });
       }
     }
 

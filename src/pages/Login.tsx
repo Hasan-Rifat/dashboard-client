@@ -38,10 +38,6 @@ const Login: React.FC = () => {
         toast.error(error.message, {
           id: "login-error",
         });
-      } else {
-        toast.error("An error occurred", {
-          id: "login-error",
-        });
       }
     }
 

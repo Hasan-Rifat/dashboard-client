@@ -20,10 +20,6 @@ const AllUser: React.FC<AllUserProps> = () => {
         toast.error(error.message, {
           id: "user-error",
         });
-      } else {
-        toast.error("An error occurred", {
-          id: "user-error",
-        });
       }
     }
 
